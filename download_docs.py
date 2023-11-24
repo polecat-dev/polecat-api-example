@@ -178,24 +178,24 @@ def write_headers(file, headers):
 
 def write_all_headers(existing):
     docs_header = (
-        "uri_hash",
+        "id",
         "harvest_time",
         "data_source",
         "sentiment",
-        "audience_size",
+        "reach",
         "publisher",
         "domain",
         "source",
-        "original_url",
+        "url",
         "title",
     )
 
     denorm_header = (
-        "uri_hash",
+        "document_id",
         "harvest_time",
         "data_source",
         "sentiment",
-        "audience_size",
+        "reach",
         "company_id",
         "company_name",
         "company_significance",
@@ -205,14 +205,14 @@ def write_all_headers(existing):
     )
 
     comp_header = (
-        "uri_hash",
+        "document_id",
         "company_id",
         "company_name",
         "company_significance",
     )
 
     tops_header = (
-        "uri_hash",
+        "document_id",
         "topic_id",
         "topic_name",
         "topic_significance",
