@@ -180,7 +180,6 @@ def write_all_headers(existing):
     docs_header = (
         "id",
         "harvest_time",
-        "data_source",
         "sentiment",
         "reach",
         "publisher",
@@ -267,7 +266,6 @@ def write_docs(documents, focus_id):
             doc_base = [
                 doc["id"],
                 doc["harvestTime"],
-                "social" if doc["domain"] == "twitter.com" else "online",
                 doc["sentiment"],
                 doc["reach"],
             ]
