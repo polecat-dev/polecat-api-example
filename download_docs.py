@@ -156,13 +156,21 @@ def get_documents(client, insight):
     page_count = 1
     while next_page:
         print("PAGE " + str(page_count) + ":")
-        response = client.execute_query_with_retries(query, variables)
-        err = response.get("errors")
+
+        err = None
+        try:
+            response = client.execute_query_with_retries(query, variables)
+            err = response.get("errors")
+        except HTTPError as ex:
+            with ex.fp as fp:
+                err = json.load(fp)["errors"]
+
         if err is not None:
             messages = "\n  ".join([e["message"] for e in err])
             graphql_err = ("Graphql query returned the following error: \n  " 
                           + messages + "\nFull error: " + json.dumps(err))
             raise Exception(graphql_err)
+
         data = response.get("data") 
         if data is None:
             break
