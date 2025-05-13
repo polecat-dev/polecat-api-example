@@ -139,7 +139,7 @@ def get_documents(client, insight):
                 edges {
                     node {
                         id harvestTime title domain url 
-                        source publisher reach sentiment
+                        source publisher reach sentiment author
                         companies { company { id name } significance }
                         topics { topic { id name } significance }
                     }
@@ -185,6 +185,7 @@ def write_all_headers(existing):
         "publisher",
         "domain",
         "source",
+        "author",
         "url",
         "title",
     )
@@ -276,6 +277,7 @@ def write_docs(documents, focus_id):
                     doc["publisher"],
                     doc["domain"],
                     doc["source"],
+                    doc["author"],
                     doc["url"],
                     doc["title"],
                 ]
